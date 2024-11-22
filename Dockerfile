@@ -1,4 +1,4 @@
-FROM kbase/sdkpython:3.8.0
+FROM kbase/sdkpython:3.8.10
 MAINTAINER KBase Developer
 
 RUN apt-get clean all && apt-get update --fix-missing -y && apt-get upgrade -y
