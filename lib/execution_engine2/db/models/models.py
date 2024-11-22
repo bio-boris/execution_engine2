@@ -336,7 +336,11 @@ class Job(Document):
         default=False
     )  # Marked true when all retry steps have completed
 
-    meta = {"collection": "ee2_jobs"}
+    # See https://docs.mongoengine.org/guide/defining-documents.html#indexes
+    # Hmm, are these indexes need to be + or - ?
+    indexes = [("status", "batch_job"), ("status", "queued")]
+
+    meta = {"collection": "ee2_jobs", "indexes": indexes}
 
     def save(self, *args, **kwargs):
         self.updated = time.time()
